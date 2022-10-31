@@ -4,7 +4,7 @@ if (!manki.miscjs) { manki.miscjs = {}; }
 
 /**
  * A simple XHR library.
- * Requires RSVP -- https://github.com/tildeio/rsvp.js/
+ * Uses ES6 Promise API.
  *
  * @param responseType Expected response type. See responseType at
  *     https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#Properties
@@ -34,7 +34,7 @@ manki.miscjs.Xhr.text = function() {
 
 
 /**
- * Sends a GET request to {@code url} and returns an RSVP promise to the
+ * Sends a GET request to {@code url} and returns a Promise to the
  * response.
  * @param opt_params An object or map of URL query parameters to pass.
  */
@@ -44,7 +44,7 @@ manki.miscjs.Xhr.prototype.get = function(url, opt_params) {
 
 
 /**
- * Sends a POST request to {@code url} and returns an RSVP promise to the
+ * Sends a POST request to {@code url} and returns a Promise to the
  * response.
  * @param opt_params An object or map of URL query parameters to pass.
  */
@@ -59,7 +59,7 @@ manki.miscjs.Xhr.prototype.post = function(url, opt_params) {
  */
 manki.miscjs.Xhr.prototype.send_ = function(method, url, opt_params) {
   var thisXhr = this;
-  return new RSVP.Promise(function(resolve, reject) {
+  return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = thisXhr.responseType;
     xhr.onload = function() {
