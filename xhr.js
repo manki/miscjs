@@ -63,7 +63,7 @@ manki.miscjs.Xhr.prototype.send_ = function(method, url, opt_params) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = thisXhr.responseType;
     xhr.onload = function() {
-      if (this.status === 200) {
+      if (Math.floor(this.status / 100) === 2) {
         resolve(this.response);
       } else {
         reject(this.statusText);
